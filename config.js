@@ -1,6 +1,7 @@
 /* POLVO EXCLUSIVES order page settings */
 window.POLVO_CONFIG = {
-  fbPage: "polvoexclusives",
+  fbPage: "61594129625549",
+  fbUrl: "https://www.facebook.com/profile.php?id=61594129625549",
   pricePerPiece: 35,
   boxSize: 8,
   pricePerBox: 350,

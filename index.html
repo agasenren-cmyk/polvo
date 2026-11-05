@@ -166,7 +166,7 @@ footer a{color:var(--paper)}
 </head>
 <body>
 
-<div class="strip"><span>Drop open · Pre-order</span><a id="fbTop" href="https://www.facebook.com/polvoexclusives" rel="noopener">FB page ↗</a></div>
+<div class="strip"><span>Drop open · Pre-order</span><a id="fbTop" href="https://www.facebook.com/profile.php?id=61594129625549" rel="noopener">FB page ↗</a></div>
 
 <div class="wrap">
   <header class="hero">
@@ -266,7 +266,7 @@ footer a{color:var(--paper)}
 
   <footer>
     <div>POLVO EXCLUSIVES · Baguio City</div>
-    <div style="margin-top:6px"><a id="fbFoot" href="https://www.facebook.com/polvoexclusives" rel="noopener">Facebook page</a> · <a id="mFoot" href="https://m.me/polvoexclusives" rel="noopener">Message us</a></div>
+    <div style="margin-top:6px"><a id="fbFoot" href="https://www.facebook.com/profile.php?id=61594129625549" rel="noopener">Facebook page</a> · <a id="mFoot" href="https://m.me/61594129625549" rel="noopener">Message us</a></div>
   </footer>
 </div>
 
@@ -470,7 +470,7 @@ $("copyBtn").onclick=async()=>{ const ok=await copyText(orderText()); toast(ok?"
 $("barBtn").onclick=()=>$("s-pay").scrollIntoView({behavior:"smooth"});
 
 /* static text from config */
-const fb=`https://www.facebook.com/${CONFIG.fbPage}`, mm=`https://m.me/${CONFIG.fbPage}`;
+const fb=CONFIG.fbUrl||`https://www.facebook.com/${CONFIG.fbPage}`, mm=`https://m.me/${CONFIG.fbPage}`;
 $("fbTop").href=fb; $("fbFoot").href=fb; $("mFoot").href=mm;
 $("pPc").textContent=`${peso(CONFIG.pricePerPiece)} each`;
 $("pBox").textContent=`${CONFIG.boxSize} pcs · ${peso(CONFIG.pricePerBox)}`;
