@@ -134,6 +134,9 @@ section{padding:26px 0;border-bottom:2px solid var(--line)}
 .qr-missing{display:none;margin:12px auto;max-width:300px;aspect-ratio:1;border:2px dashed var(--mute);place-items:center;padding:20px;color:var(--mute);font-size:12px}
 .acct{font-size:13px;margin-top:4px}
 .acct b{color:var(--red)}
+.wnote{font-size:11px;color:var(--mute);margin-top:6px}
+.saveqr{display:block;margin:12px auto 0;max-width:300px;padding:12px;border:2px solid var(--paper);font-weight:800;font-size:12px;letter-spacing:.08em;text-decoration:none}
+.saveqr.hide{display:none}
 .steps-pay{text-align:left;margin-top:12px;font-size:12px;color:var(--paper);list-style:none;counter-reset:s}
 .steps-pay li{counter-increment:s;padding:4px 0 4px 26px;position:relative}
 .steps-pay li::before{content:counter(s,decimal-leading-zero);position:absolute;left:0;color:var(--red);font-weight:800}
@@ -163,7 +166,7 @@ footer a{color:var(--paper)}
 </head>
 <body>
 
-<div class="strip"><span>Drop open · Pre-order</span><a id="fbTop" href="#" rel="noopener">FB page ↗</a></div>
+<div class="strip"><span>Drop open · Pre-order</span><a id="fbTop" href="https://www.facebook.com/polvoexclusives" rel="noopener">FB page ↗</a></div>
 
 <div class="wrap">
   <header class="hero">
@@ -241,10 +244,13 @@ footer a{color:var(--paper)}
       <img id="payQr" alt="Payment QR code">
       <div class="qr-missing" id="qrMissing">Payment QR is being added. Send your order on Messenger and we'll reply with the payment details.</div>
       <div class="acct" id="acct"></div>
+      <div class="wnote" id="walletNote"></div>
+      <a class="saveqr" id="saveQr" href="pay-qr.png" download="POLVO-pay-qr.png">SAVE QR TO PHOTOS</a>
       <ol class="steps-pay">
-        <li>Pay the exact <b id="payNow2">₱0</b> using the QR above.</li>
-        <li>Screenshot the receipt.</li>
-        <li>Tap <b>SEND ORDER</b> below and attach the screenshot in Messenger.</li>
+        <li>Save this QR (tap the button, or screenshot it).</li>
+        <li>Open GCash, tap <b>QR</b>, then <b>Upload QR</b> and pick the saved image. On Maya, GoTyme or a bank app, use its Scan QR and upload from gallery.</li>
+        <li>Pay the exact <b id="payNow2">₱0</b> and screenshot the receipt.</li>
+        <li>Tap <b>SEND ORDER</b> below and attach the receipt in Messenger.</li>
       </ol>
     </div>
   </section>
@@ -260,7 +266,7 @@ footer a{color:var(--paper)}
 
   <footer>
     <div>POLVO EXCLUSIVES · Baguio City</div>
-    <div style="margin-top:6px"><a id="fbFoot" href="#" rel="noopener">Facebook page</a> · <a id="mFoot" href="#" rel="noopener">Message us</a></div>
+    <div style="margin-top:6px"><a id="fbFoot" href="https://www.facebook.com/polvoexclusives" rel="noopener">Facebook page</a> · <a id="mFoot" href="https://m.me/polvoexclusives" rel="noopener">Message us</a></div>
   </footer>
 </div>
 
@@ -473,9 +479,10 @@ $("boxHint").textContent=`${CONFIG.boxSize} pieces per box, ${peso(CONFIG.priceP
 $("dpLbl").textContent=`${CONFIG.downpaymentPct}% DOWN`;
 $("pillReady").textContent=CONFIG.readyText; $("pickupTxt").textContent=CONFIG.pickupText;
 $("walletLbl").textContent=`SCAN TO PAY · ${CONFIG.wallet.toUpperCase()}`;
-$("acct").innerHTML = CONFIG.walletName||CONFIG.walletNumber ? `${CONFIG.wallet}: <b>${CONFIG.walletName}</b> ${CONFIG.walletNumber}` : "";
+$("acct").innerHTML = CONFIG.walletName||CONFIG.walletNumber ? `Pay to: <b>${CONFIG.walletName}</b> ${CONFIG.walletNumber}` : "";
+$("walletNote").textContent = CONFIG.walletNote||"";
 $("odate").textContent=new Date().toLocaleDateString("en-PH",{month:"short",day:"numeric",year:"numeric"}).toUpperCase();
-const q=$("payQr"); q.onerror=()=>{q.style.display="none"; $("qrMissing").style.display="grid";}; q.src=CONFIG.payQrFile;
+const q=$("payQr"); q.onerror=()=>{q.style.display="none"; $("qrMissing").style.display="grid"; $("saveQr").classList.add("hide");}; q.src=CONFIG.payQrFile; $("saveQr").href=CONFIG.payQrFile;
 
 update();
 </script>

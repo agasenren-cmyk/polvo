@@ -6,9 +6,10 @@ window.POLVO_CONFIG = {
   pricePerBox: 350,
   downpaymentPct: 50,
   wallet: "GCash",
-  walletName: "",
+  walletName: "RE*Z SH**T A.",
   walletNumber: "",
   payQrFile: "pay-qr.png",
+  walletNote: "Works with GCash, Maya, GoTyme & bank apps (InstaPay QR Ph)",
   readyText: "Ready in 1\u20134 weeks",
   pickupText: "Meetup in Baguio"
 };
